@@ -1,1 +1,0 @@
-sudo ssh root@139.224.53.131 -i /Users/zhouzilong/Desktop/key.pem

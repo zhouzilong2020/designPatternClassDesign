@@ -21,10 +21,8 @@ protected:
 
     /**
      * 工厂接口的构造函数
-     * @param facility 工厂所建造的场馆
-     * @param builder 建造场馆所需要的builder
      */
-    IFactory(IFacility &facility, IBuilder &builder) : _facility(&facility), _builder(&builder) {}
+    IFactory(IBuilder &builder) : _builder(&builder) {}
 
 public:
     /// 虚函数，如何建造一个场馆需要具体类来实现

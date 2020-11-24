@@ -8,7 +8,7 @@ class Observer
 public:
     virtual void Update(string) = 0;
 };
-
+//notification
 class RunningNotification
 {
 public:
@@ -16,7 +16,7 @@ public:
     virtual void Unsubscribe(Observer *) = 0;
     virtual void NotifySubscribers() = 0;
 };
-
+//instance1
 class Rabbit : public Observer
 {
 public:
@@ -30,7 +30,7 @@ public:
 private:
     RunningNotification *m_pSubject;
 };
-
+//instance2
 class tortoise : public Observer
 {
 public:

@@ -6,7 +6,7 @@ class IndividualEvents
 public:
     virtual void show() = 0;
 };
-
+//IndividualEvent1
 class Running : public IndividualEvents
 {
 public:
@@ -15,7 +15,7 @@ public:
         cout << "A Running::IndividualEvents() has been created." << endl;
     }
 };
-
+//IndividualEvent2
 class Swimming : public IndividualEvents
 {
 public:
@@ -24,7 +24,7 @@ public:
         cout << "A Swimming::IndividualEvents() has been created." << endl;
     }
 };
-
+//IndividualEvent3
 class HighJumping : public IndividualEvents
 {
 public:
@@ -39,7 +39,7 @@ class TeamEvents
 public:
     virtual void show() = 0;
 };
-
+//TeamEvents1
 class TugOfWar : public TeamEvents
 {
 public:
@@ -48,7 +48,7 @@ public:
         cout << "A TugOfWar::TeamEvents() has been created." << endl;
     }
 };
-
+//TeamEvents2
 class RelayRunning : public TeamEvents
 {
 public:
@@ -57,7 +57,7 @@ public:
         cout << "A RelayRunning::TeamEvents() has been created." << endl;
     }
 };
-
+//TeamEvents3
 class Basketball : public TeamEvents
 {
 public:
@@ -73,7 +73,7 @@ public:
     virtual IndividualEvents *getIndividualEvent(string IndividualEvent) = 0;
     virtual TeamEvents *getTeamEvent(string TeamEvent) = 0;
 };
-
+//IndividualFactory
 class IndividualEventsFactory : public AbstractFactory
 {
 public:
@@ -104,7 +104,7 @@ public:
         return NULL;
     }
 };
-
+//TeamFactory
 class TeamEventsFactory : public AbstractFactory
 {
 public:

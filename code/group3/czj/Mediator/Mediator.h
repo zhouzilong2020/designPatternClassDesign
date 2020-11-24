@@ -3,8 +3,6 @@
 using namespace std;
 
 
-
-
 class User {
 private:
    string name;
@@ -22,14 +20,13 @@ public:
       name  = Name;
    }
  
-   void sendMessage(string message){
-      ChatRoom.showMessage(this,message);
-   }
+   void sendMessage(string message);
+   
 };
-
+// create ChatRoom
 class ChatRoom {
 public:
     void static showMessage(User* user, string message){
-      cout<<user->getName()<<" "<<message;
+      cout<<user->getName()<<" said:  "<<message<<endl;
    }
 };

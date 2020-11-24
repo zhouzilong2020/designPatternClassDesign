@@ -7,7 +7,7 @@ using namespace std;
 class Animal {
 private:
     //maximum num of animal
-    static const int maxNumberOfAnimal=10;
+    static const int maxNumberOfAnimal=4;
     static vector<string> AnimalInfoList;
     static vector<Animal> AnimalList;
     static int countNumOfAnimal;
@@ -28,7 +28,15 @@ public:
     }
     //create instance
     static Animal getInstance(int num){
-		return AnimalList[num];
+        if(num<=maxNumberOfAnimal)
+		    return AnimalList[num];
+        else
+        {
+            cout<<"Instance number out of range!"<<endl;
+            Animal instance;
+            return instance;
+        }
+        
 	}
 	//get attribute
     static string getAttribute(int i){  

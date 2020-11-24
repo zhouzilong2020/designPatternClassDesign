@@ -3,81 +3,84 @@
 #include <cstring>
 using namespace std;
 
-class Observer
+namespace Observer
 {
-public:
-    virtual void Update(string) = 0;
-};
-//notification
-class RunningNotification
-{
-public:
-    virtual void Subscribe(Observer *) = 0;
-    virtual void Unsubscribe(Observer *) = 0;
-    virtual void NotifySubscribers() = 0;
-};
-//instance1
-class Rabbit : public Observer
-{
-public:
-    Rabbit(RunningNotification *pSubject) : m_pSubject(pSubject) {}
-
-    void Update(string newRaceTime)
+    class Observer
     {
-        cout << "Rabbit get the updated time for the running race: " << newRaceTime << endl;
+    public:
+        virtual void Update(string) = 0;
+    };
+    //notification
+    class RunningNotification
+    {
+    public:
+        virtual void Subscribe(Observer *) = 0;
+        virtual void Unsubscribe(Observer *) = 0;
+        virtual void NotifySubscribers() = 0;
+    };
+    //instance1
+    class Rabbit : public Observer
+    {
+    public:
+        Rabbit(RunningNotification *pSubject) : m_pSubject(pSubject) {}
+
+        void Update(string newRaceTime)
+        {
+            cout << "Rabbit get the updated time for the running race: " << newRaceTime << endl;
+        }
+
+    private:
+        RunningNotification *m_pSubject;
+    };
+    //instance2
+    class tortoise : public Observer
+    {
+    public:
+        tortoise(RunningNotification *pSubject) : m_pSubject(pSubject) {}
+
+        void Update(string newRaceTime)
+        {
+            cout << "tortoise get the updated time for the running race: " << newRaceTime << endl;
+        }
+
+    private:
+        RunningNotification *m_pSubject;
+    };
+
+    class ConcreteRunningNotification : public RunningNotification
+    {
+    public:
+        void Subscribe(Observer *pObserver);
+        void Unsubscribe(Observer *pObserver);
+        void NotifySubscribers();
+
+        void SetRacetime(string newRaceTime)
+        {
+            RunningRaceTime = newRaceTime;
+        }
+
+    private:
+        std::list<Observer *> m_ObserverList;
+        string RunningRaceTime;
+    };
+
+    void ConcreteRunningNotification::Subscribe(Observer *pObserver)
+    {
+        m_ObserverList.push_back(pObserver);
     }
 
-private:
-    RunningNotification *m_pSubject;
-};
-//instance2
-class tortoise : public Observer
-{
-public:
-    tortoise(RunningNotification *pSubject) : m_pSubject(pSubject) {}
-
-    void Update(string newRaceTime)
+    void ConcreteRunningNotification::Unsubscribe(Observer *pObserver)
     {
-        cout << "tortoise get the updated time for the running race: " << newRaceTime << endl;
+        m_ObserverList.remove(pObserver);
     }
 
-private:
-    RunningNotification *m_pSubject;
-};
-
-class ConcreteRunningNotification : public RunningNotification
-{
-public:
-    void Subscribe(Observer *pObserver);
-    void Unsubscribe(Observer *pObserver);
-    void NotifySubscribers();
-
-    void SetRacetime(string newRaceTime)
+    void ConcreteRunningNotification::NotifySubscribers()
     {
-        RunningRaceTime = newRaceTime;
+        std::list<Observer *>::iterator it = m_ObserverList.begin();
+        while (it != m_ObserverList.end())
+        {
+            (*it)->Update(RunningRaceTime);
+            ++it;
+        }
     }
-
-private:
-    std::list<Observer *> m_ObserverList;
-    string RunningRaceTime;
-};
-
-void ConcreteRunningNotification::Subscribe(Observer *pObserver)
-{
-    m_ObserverList.push_back(pObserver);
-}
-
-void ConcreteRunningNotification::Unsubscribe(Observer *pObserver)
-{
-    m_ObserverList.remove(pObserver);
-}
-
-void ConcreteRunningNotification::NotifySubscribers()
-{
-    std::list<Observer *>::iterator it = m_ObserverList.begin();
-    while (it != m_ObserverList.end())
-    {
-        (*it)->Update(RunningRaceTime);
-        ++it;
-    }
-}
+} // namespace Observer

@@ -13,7 +13,8 @@
 
 #include "./ServiceLocator/ServiceLocator.h"
 #include "./ServiceLocator/Service/IService.h"
-
+#include "./ServiceLocator/BusinessDelegate.h"
+#include "./ServiceLocator/FrontController.h"
 using namespace std;
 
 int main() {
@@ -41,10 +42,12 @@ int main() {
 //
 //    dishManager->request();
 
-    ServiceLocator *serviceLocator = new ServiceLocator();
-    IService *_5GService_1 = serviceLocator->getService("FiveGService");
-    _5GService_1->execute();
-    IService *_5GService_2 = serviceLocator->getService("FiveGService");
-    _5GService_2->execute();
-
+//    ServiceLocator *serviceLocator = new ServiceLocator();
+//    IService *_5GService_1 = serviceLocator->getService("FiveGService");
+//    _5GService_1->execute();
+//    IService *_5GService_2 = serviceLocator->getService("FiveGService");
+//    _5GService_2->execute();
+	FrontController* frontController = new FrontController();
+	frontController->dispatchRequest("FiveGService");
+	frontController->dispatchRequest("FourGService");
 }

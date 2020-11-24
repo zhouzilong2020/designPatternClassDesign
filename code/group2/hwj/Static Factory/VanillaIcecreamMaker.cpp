@@ -1,6 +1,10 @@
 #include "VanillaIcecreamMaker.h"
 
-void VanillaIcecreamMaker::makeIcecream()
+namespace StaticFactory
 {
-	cout << "àÛàÛàÛàÛ~~~Ïã²Ý±ù¼¤Áè×öºÃÁË~"<<endl;
+	//Ïã²Ý±ù¼¤ÁèÖÆ×÷»úÀàmakeIcecreamº¯Êý¾ßÌåÊµÏÖ
+	void VanillaIcecreamMaker::makeIcecream()
+	{
+		cout << "àÛàÛàÛàÛ~~~Ïã²Ý±ù¼¤Áè×öºÃÁË~" << endl;
+	}
 }

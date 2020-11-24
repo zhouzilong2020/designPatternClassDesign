@@ -7,11 +7,14 @@
 
 using namespace std;
 
-//巧克力冰激凌制作机类（具体产品）
-class ChocoIcecreamMaker :public IIcecreamMaker
+namespace StaticFactory
 {
-public:
-	void makeIcecream();
-};
+	//巧克力冰激凌制作机类（具体产品）
+	class ChocoIcecreamMaker :public IIcecreamMaker
+	{
+	public:
+		void makeIcecream();
+	};
+}
 
 #endif // !CHOCOICECREAMMAKER_H

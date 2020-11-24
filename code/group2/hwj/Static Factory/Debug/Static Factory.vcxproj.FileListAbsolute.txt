@@ -1,2 +1,0 @@
-C:\Users\marsd\Desktop\架构设计\Git\designPatternClassDesign\code\group2\hwj\Static Factory\Debug\Static Factory.exe
-C:\Users\marsd\Desktop\架构设计\Git\designPatternClassDesign\code\group2\hwj\Static Factory\Debug\Static Factory.pdb

@@ -1,6 +1,10 @@
 #include "ChocoIcecreamMaker.h"
 
-void ChocoIcecreamMaker::makeIcecream()
+namespace StaticFactory
 {
-	cout << "噗噗噗噗~~~巧克力冰激凌做好了~"<<endl;
+	//巧克力冰激凌制作机类makeIcecream函数具体实现
+	void ChocoIcecreamMaker::makeIcecream()
+	{
+		cout << "噗噗噗噗~~~巧克力冰激凌做好了~" << endl;
+	}
 }
